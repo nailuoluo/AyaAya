@@ -6,15 +6,16 @@ import android.os.Bundle
 import com.momiji.kotlin.ayaaya.R
 import com.momiji.kotlin.ayaaya.login.LoginLocalInfo
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AbsActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        mLayout = R.layout.activity_main
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        initialize()
+//        setContentView(R.layout.activity_main)
+//        initialize()
     }
 
-    private fun initialize(): Unit {
+    private fun initialize() {
         val login = LoginLocalInfo(this@MainActivity)
         if(login.needsLogin()) {
             val intent = Intent(this@MainActivity, CYWeiboContentActivity::class.java)
