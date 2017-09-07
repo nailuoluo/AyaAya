@@ -24,7 +24,7 @@ class LoginModule(context: Context): BaseModule(context) {
 
         login.mAppId = appid
         login.mAppSecret = appsecret
-        login.mRedirectUri = appsecret
+        login.mRedirectUri = redirecturl
 
         val url = OAUTH2_ACCESS_AUTHORIZE + "?" + "client_id=" + appid +
                 "&response_type=token&redirect_uri=" + redirecturl +

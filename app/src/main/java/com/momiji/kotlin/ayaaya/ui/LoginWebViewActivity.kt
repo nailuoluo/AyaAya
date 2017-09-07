@@ -1,6 +1,7 @@
 package com.momiji.kotlin.ayaaya.ui
 
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebResourceRequest
@@ -11,6 +12,7 @@ import com.momiji.kotlin.ayaaya.R
 import com.momiji.kotlin.ayaaya.module.login.LoginLocalInfo
 import com.momiji.kotlin.ayaaya.module.login.LoginModule
 import kotlinx.android.synthetic.main.activity_login_web_view.*
+import java.net.URI
 
 class LoginWebViewActivity : AbsActivity() {
 
@@ -27,16 +29,26 @@ class LoginWebViewActivity : AbsActivity() {
     private fun initialize(): Unit {
         mLoginLocalInfo = LoginLocalInfo(this@LoginWebViewActivity)
         var settings = web_view_login.settings
-//        settings.javaScriptEnabled = true
+        settings.javaScriptEnabled = true
         settings.cacheMode = WebSettings.LOAD_NO_CACHE
         web_view_login.webViewClient = object:WebViewClient() {
 
+//            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+//                var url: Uri = request!!.url
+//                if (url.toString().startsWith(mLoginLocalInfo.mRedirectUri)) {
+//                    view!!.stopLoading()
+//                    handleRedirectUrl(url.toString())
+//                    return true
+//                } else
+//                return super.shouldOverrideUrlLoading(view, request)
+//            }
 
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 web_view_progressbar.visibility = View.VISIBLE
-                if(url!!.startsWith(mLoginLocalInfo.mRedirectUri)) {
+                if (url!!.startsWith(mLoginLocalInfo.mRedirectUri)) {
                     view!!.stopLoading()
                     handleRedirectUrl(url)
+                    return
                 } else super.onPageStarted(view, url, favicon)
             }
 
