@@ -30,7 +30,7 @@ class LoginWebViewActivity : AbsActivity() {
 //        settings.javaScriptEnabled = true
         settings.cacheMode = WebSettings.LOAD_NO_CACHE
         web_view_login.webViewClient = object:WebViewClient() {
-            
+
 
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 web_view_progressbar.visibility = View.VISIBLE
