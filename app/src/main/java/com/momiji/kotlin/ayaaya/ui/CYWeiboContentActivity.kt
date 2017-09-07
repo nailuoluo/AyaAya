@@ -3,7 +3,7 @@ package com.momiji.kotlin.ayaaya.ui
 import android.content.Intent
 import android.os.Bundle
 import com.momiji.kotlin.ayaaya.R
-import com.momiji.kotlin.ayaaya.login.LoginLocalInfo
+import com.momiji.kotlin.ayaaya.module.login.LoginLocalInfo
 
 class CYWeiboContentActivity : AbsActivity() {
 

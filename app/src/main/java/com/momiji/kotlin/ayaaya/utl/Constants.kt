@@ -15,8 +15,11 @@ const val WEICO_APP_KEY: String = "211160679"
 const val WEICO_APP_SECRET: String = "63b64d531b98c2dbff2443816f274dd3"
 
 
-const val ACCESS_TOKEN: String = "access_token"
-const val UID: String = "uid"
-const val EXPIRE_IN: String = "expires_in"
+const val KEY_ACCESS_TOKEN: String = "access_token"
+const val KEY_UID: String = "uid"
+const val KEY_EXPIRE_IN: String = "expires_in"
+const val KEY_REDIRECT_URI: String = "redirect_uri"
+const val KEY_APP_ID: String ="app_id"
+const val KEY_APP_SECRET: String = "app_secret"
 
 const val REQUEST_CODE_LOGIN_WEB_VIEW_ACTIVIT: Int = 0

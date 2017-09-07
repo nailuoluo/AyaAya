@@ -12,4 +12,4 @@ fun isTokenExpired(expireddate: Long): Boolean {
 }
 
 fun String.decodeLoginData(): List<String> =
-        Base64.decode(this, Base64.URL_SAFE or Base64.NO_WRAP or Base64.NO_PADDING or Base64.NO_CLOSE).toString().split(BM_SEPERATOR)
+        String(Base64.decode(this, Base64.URL_SAFE or Base64.NO_WRAP or Base64.NO_PADDING or Base64.NO_CLOSE)).split(BM_SEPERATOR)

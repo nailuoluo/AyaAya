@@ -1,10 +1,9 @@
 package com.momiji.kotlin.ayaaya.ui
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.momiji.kotlin.ayaaya.R
-import com.momiji.kotlin.ayaaya.login.LoginLocalInfo
+import com.momiji.kotlin.ayaaya.module.login.LoginLocalInfo
 
 class MainActivity : AbsActivity() {
 
@@ -12,7 +11,7 @@ class MainActivity : AbsActivity() {
         mLayout = R.layout.activity_main
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_main)
-//        initialize()
+        initialize()
     }
 
     private fun initialize() {
