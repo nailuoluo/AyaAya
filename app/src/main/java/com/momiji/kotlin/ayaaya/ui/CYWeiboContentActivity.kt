@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.momiji.kotlin.ayaaya.R
 import com.momiji.kotlin.ayaaya.module.login.LoginLocalInfo
+import com.momiji.kotlin.ayaaya.utl.REQUEST_CODE_LOGIN_WEB_VIEW_ACTIVIT
 
 class CYWeiboContentActivity : AbsActivity() {
 
@@ -18,7 +19,7 @@ class CYWeiboContentActivity : AbsActivity() {
         var login = LoginLocalInfo(this@CYWeiboContentActivity)
         if (login.needsLogin()) {
             val intent = Intent(this@CYWeiboContentActivity, LoginWebViewActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, REQUEST_CODE_LOGIN_WEB_VIEW_ACTIVIT)
         }
         else {
             return

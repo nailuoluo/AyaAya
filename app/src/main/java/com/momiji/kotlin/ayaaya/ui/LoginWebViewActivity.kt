@@ -1,5 +1,6 @@
 package com.momiji.kotlin.ayaaya.ui
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Toast
 import com.momiji.kotlin.ayaaya.R
 import com.momiji.kotlin.ayaaya.module.login.LoginLocalInfo
 import com.momiji.kotlin.ayaaya.module.login.LoginModule
@@ -68,9 +70,13 @@ class LoginWebViewActivity : AbsActivity() {
             val token = url.substring(tokenIndex + 13, url.indexOf("&", tokenIndex))
             val expiresIn = url.substring(expiresIndex + 11, url.indexOf("&", expiresIndex))
             mLoginLocalInfo.mAccessToken = token
-            mLoginLocalInfo.mExpireDate = expiresIn.toLong()
+            mLoginLocalInfo.mExpireDate = System.currentTimeMillis() + expiresIn.toLong()
+            // to create the result data back to CYWeiboContentActivity
+            var intent: Intent = Intent()
+
         } else {
-            return
+            Toast.makeText(this@LoginWebViewActivity, "error", Toast.LENGTH_SHORT).show()
+            finish()
         }
 
     }

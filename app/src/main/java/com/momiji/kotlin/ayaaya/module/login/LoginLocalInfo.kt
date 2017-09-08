@@ -3,6 +3,7 @@ package com.momiji.kotlin.ayaaya.module.login
 import android.content.Context
 import com.momiji.kotlin.ayaaya.ui.MyPreferences
 import com.momiji.kotlin.ayaaya.utl.*
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by Momiji on 2017/9/5.
@@ -18,7 +19,15 @@ class LoginLocalInfo(val mContext: Context) {
     var mRedirectUri: String by MyPreferences(mContext, KEY_REDIRECT_URI, "")
 
     fun needsLogin(): Boolean {
-        return(mAccessToken.isEmpty() || isTokenExpired(mExpireDate))
+//        if ((mAccessToken.isEmpty() || isTokenExpired(mExpireDate))) {
+//            return true
+//        } else if (expireTimeInDays(mExpireDate) <= 0) {
+//            return true
+//        } else return false
+       return (mAccessToken.isEmpty() || isTokenExpired(mExpireDate))
     }
 
+    private fun expireTimeInDays(time: Long): Int {
+        return TimeUnit.MILLISECONDS.toDays(time - System.currentTimeMillis()).toInt()
+    }
 }

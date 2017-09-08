@@ -2,6 +2,7 @@ package com.momiji.kotlin.ayaaya.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import com.momiji.kotlin.ayaaya.R
 import com.momiji.kotlin.ayaaya.module.login.LoginLocalInfo
 
@@ -21,7 +22,7 @@ class MainActivity : AbsActivity() {
             startActivity(intent)
             finish()
         } else {
-
+            Log.d("Token storage test:", login.mAccessToken)
         }
     }
 }
