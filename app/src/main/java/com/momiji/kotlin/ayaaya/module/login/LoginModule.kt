@@ -10,18 +10,20 @@ import com.momiji.kotlin.ayaaya.utl.decodeLoginData
 /**
  * Created by liuy314 on 2017/9/7.
  */
-class LoginModule(context: Context): BaseModule(context) {
+class LoginModule(val mContext: Context) {
 
     fun getOAuthPageUrl(): String {
-        val data: List<String> = BM_CODE.decodeLoginData()
-        var login: LoginLocalInfo = LoginLocalInfo(mContext)
 
+        //解析weico信息
+        val data: List<String> = BM_CODE.decodeLoginData()
         val appid = data[0].trim()
         val appsecret = data[1].trim()
         val redirecturl = data[2].trim()
         val scope = data[3].trim()
         val pkgname = data[4].trim()
 
+        //解析了Weico信息后，存储在SharedPreference中
+        var login = LoginLocalInfo(mContext)
         login.mAppId = appid
         login.mAppSecret = appsecret
         login.mRedirectUri = redirecturl

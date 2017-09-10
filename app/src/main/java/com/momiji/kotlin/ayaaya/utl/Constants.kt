@@ -23,3 +23,5 @@ const val KEY_APP_ID: String ="app_id"
 const val KEY_APP_SECRET: String = "app_secret"
 
 const val REQUEST_CODE_LOGIN_WEB_VIEW_ACTIVIT: Int = 0
+
+const val DEFAULT_TIME_OUT: Long = 15L
