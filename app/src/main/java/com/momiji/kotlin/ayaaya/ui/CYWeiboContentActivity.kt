@@ -2,8 +2,9 @@ package com.momiji.kotlin.ayaaya.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import com.momiji.kotlin.ayaaya.R
-import com.momiji.kotlin.ayaaya.module.login.LoginLocalInfo
+import com.momiji.kotlin.ayaaya.module.oauth.login.LoginLocalInfo
 import com.momiji.kotlin.ayaaya.utl.REQUEST_CODE_LOGIN_WEB_VIEW_ACTIVIT
 
 class CYWeiboContentActivity : AbsActivity() {
@@ -15,15 +16,33 @@ class CYWeiboContentActivity : AbsActivity() {
         initialize()
     }
 
-    private fun initialize(): Unit {
+    private fun initialize() {
         var login = LoginLocalInfo(this@CYWeiboContentActivity)
         if (login.needsLogin()) {
             val intent = Intent(this@CYWeiboContentActivity, LoginWebViewActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE_LOGIN_WEB_VIEW_ACTIVIT)
         }
         else {
-            return
+            Log.d("Logininfo------", login.mAccessToken)
+            Log.d("Logininfo------", login.mUid)
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            REQUEST_CODE_LOGIN_WEB_VIEW_ACTIVIT -> {
+                when (resultCode) {
+                    RESULT_OK -> getCYWeiboContent()
+                    RESULT_CANCELED ->finish()
+                }
+            }
+            else -> super.onActivityResult(requestCode, resultCode, data)
+        }
+
+    }
+
+    private fun getCYWeiboContent() {
+
     }
 
 

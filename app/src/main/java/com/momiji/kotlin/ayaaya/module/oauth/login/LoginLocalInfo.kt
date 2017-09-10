@@ -1,4 +1,4 @@
-package com.momiji.kotlin.ayaaya.module.login
+package com.momiji.kotlin.ayaaya.module.oauth.login
 
 import android.content.Context
 import com.momiji.kotlin.ayaaya.ui.MyPreferences

@@ -4,13 +4,10 @@ package com.momiji.kotlin.ayaaya.module
  * Created by Momiji on 2017/9/10.
  */
 
-import android.util.Log
-
 import java.io.IOException
 import java.util.HashMap
 
 import okhttp3.Interceptor
-import okhttp3.Request
 import okhttp3.Response
 
 /**

@@ -1,12 +1,11 @@
 package com.momiji.kotlin.ayaaya.module
 
 import android.content.Context
-import com.momiji.kotlin.ayaaya.module.login.LoginLocalInfo
-import com.momiji.kotlin.ayaaya.ui.MyPreferences
+import com.momiji.kotlin.ayaaya.module.oauth.login.LoginLocalInfo
 import com.momiji.kotlin.ayaaya.utl.DEFAULT_TIME_OUT
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -15,7 +14,6 @@ import java.util.concurrent.TimeUnit
  */
 object RetrofitServiceManager {
 
-    var mAccessToken: String = ""
     lateinit var mRetrofit: Retrofit
 
     fun init(context: Context) {
@@ -32,11 +30,10 @@ object RetrofitServiceManager {
         builder.addInterceptor(commonInterceptor)
 
         mRetrofit = Retrofit.Builder().client(builder.build())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(MoshiConverterFactory.create())
                 .baseUrl(SINA_BASE_URL)
                 .build()
-
     }
 
 

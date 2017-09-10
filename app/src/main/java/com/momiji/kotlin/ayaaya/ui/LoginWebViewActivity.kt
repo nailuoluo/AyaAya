@@ -2,19 +2,19 @@ package com.momiji.kotlin.ayaaya.ui
 
 import android.content.Intent
 import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.webkit.WebResourceRequest
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
 import com.momiji.kotlin.ayaaya.R
-import com.momiji.kotlin.ayaaya.module.login.LoginLocalInfo
-import com.momiji.kotlin.ayaaya.module.login.LoginModule
+import com.momiji.kotlin.ayaaya.module.exception.ExceptionModule
+import com.momiji.kotlin.ayaaya.module.oauth.OAuthModule
+import com.momiji.kotlin.ayaaya.module.oauth.login.LoginLocalInfo
+import com.momiji.kotlin.ayaaya.module.oauth.login.LoginModule
 import kotlinx.android.synthetic.main.activity_login_web_view.*
-import java.net.URI
+
 
 class LoginWebViewActivity : AbsActivity() {
 
@@ -71,13 +71,27 @@ class LoginWebViewActivity : AbsActivity() {
             val expiresIn = url.substring(expiresIndex + 11, url.indexOf("&", expiresIndex))
             mLoginLocalInfo.mAccessToken = token
             mLoginLocalInfo.mExpireDate = System.currentTimeMillis() + expiresIn.toLong()
-            // to create the result data back to CYWeiboContentActivity
-            var intent: Intent = Intent()
 
+            requestUid()
+
+            // to create the result data back to CYWeiboContentActivity
+            var intent = Intent()
+            this@LoginWebViewActivity.setResult(android.app.Activity.RESULT_OK, intent)
         } else {
             Toast.makeText(this@LoginWebViewActivity, "error", Toast.LENGTH_SHORT).show()
-            finish()
+            var intent = Intent()
+            this@LoginWebViewActivity.setResult(android.app.Activity.RESULT_CANCELED, intent)
         }
+        this@LoginWebViewActivity.finish()
+    }
 
+    private fun requestUid() {
+        val oauthmodule = OAuthModule(this@LoginWebViewActivity)
+        oauthmodule.getUid().subscribe({
+            uidModel->
+            mLoginLocalInfo.mUid = uidModel.uid
+        }, {
+            e -> Toast.makeText(this@LoginWebViewActivity, ExceptionModule.handle(e), Toast.LENGTH_LONG).show()
+        })
     }
 }

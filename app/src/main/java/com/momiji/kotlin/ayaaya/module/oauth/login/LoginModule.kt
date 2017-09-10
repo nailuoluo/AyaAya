@@ -1,7 +1,6 @@
-package com.momiji.kotlin.ayaaya.module.login
+package com.momiji.kotlin.ayaaya.module.oauth.login
 
 import android.content.Context
-import com.momiji.kotlin.ayaaya.module.BaseModule
 import com.momiji.kotlin.ayaaya.module.OAUTH2_ACCESS_AUTHORIZE
 import com.momiji.kotlin.ayaaya.utl.BM_CODE
 import com.momiji.kotlin.ayaaya.utl.decodeLoginData
