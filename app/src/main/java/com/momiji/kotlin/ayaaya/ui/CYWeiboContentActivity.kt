@@ -4,7 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import com.momiji.kotlin.ayaaya.R
+import com.momiji.kotlin.ayaaya.model.statuses.StatusModel
 import com.momiji.kotlin.ayaaya.module.oauth.login.LoginLocalInfo
+import com.momiji.kotlin.ayaaya.module.statuses.StatusesModule
+import com.momiji.kotlin.ayaaya.utl.HER_UID
 import com.momiji.kotlin.ayaaya.utl.REQUEST_CODE_LOGIN_WEB_VIEW_ACTIVIT
 
 class CYWeiboContentActivity : AbsActivity() {
@@ -25,6 +28,7 @@ class CYWeiboContentActivity : AbsActivity() {
         else {
             Log.d("Logininfo------", login.mAccessToken)
             Log.d("Logininfo------", login.mUid)
+            getCYWeiboContent()
         }
     }
 
@@ -42,7 +46,10 @@ class CYWeiboContentActivity : AbsActivity() {
     }
 
     private fun getCYWeiboContent() {
-
+        val statusesModule = StatusesModule(this@CYWeiboContentActivity)
+        statusesModule.getUserTimeline(HER_UID).subscribe({
+            userTimeModel -> userTimeModel.total_number
+        })
     }
 
 

@@ -16,13 +16,8 @@ class MainActivity : AbsActivity() {
     }
 
     private fun initialize() {
-        val login = LoginLocalInfo(this@MainActivity)
-        if(login.needsLogin()) {
-            val intent = Intent(this@MainActivity, CYWeiboContentActivity::class.java)
-            startActivity(intent)
-            finish()
-        } else {
-            Log.d("Token storage test:", login.mAccessToken)
-        }
+        val intent = Intent(this@MainActivity, CYWeiboContentActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

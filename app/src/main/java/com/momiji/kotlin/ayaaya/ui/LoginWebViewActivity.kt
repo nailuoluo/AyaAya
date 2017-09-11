@@ -86,8 +86,8 @@ class LoginWebViewActivity : AbsActivity() {
     }
 
     private fun requestUid() {
-        val oauthmodule = OAuthModule(this@LoginWebViewActivity)
-        oauthmodule.getUid().subscribe({
+        val oauthModule = OAuthModule(this@LoginWebViewActivity)
+        oauthModule.getUid().subscribe({
             uidModel->
             mLoginLocalInfo.mUid = uidModel.uid
         }, {
