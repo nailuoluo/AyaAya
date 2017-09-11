@@ -26,5 +26,7 @@ const val REQUEST_CODE_LOGIN_WEB_VIEW_ACTIVIT: Int = 0
 
 const val DEFAULT_TIME_OUT: Long = 15L
 
-const val CODE_SUCESS = 0
-const val CODE_FAIL = 1
+//const val CODE_SUCESS = 0
+//const val CODE_FAIL = 1
+
+const val HER_UID: String = "1798817795"
