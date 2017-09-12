@@ -2,9 +2,7 @@ package com.momiji.kotlin.ayaaya.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import com.momiji.kotlin.ayaaya.R
-import com.momiji.kotlin.ayaaya.module.oauth.login.LoginLocalInfo
 
 class MainActivity : AbsActivity() {
 

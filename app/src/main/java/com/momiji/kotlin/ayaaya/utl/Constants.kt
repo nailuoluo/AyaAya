@@ -1,6 +1,8 @@
 @file:JvmName("Constants")
 package com.momiji.kotlin.ayaaya.utl
 
+import java.util.regex.Pattern
+
 /**
  * Created by Momiji on 2017/9/2.
  */
@@ -30,3 +32,10 @@ const val DEFAULT_TIME_OUT: Long = 15L
 //const val CODE_FAIL = 1
 
 const val HER_UID: Long = 1798817795
+
+//正则表达式
+const val PATTERN_AT: String = "@[\\u4e00-\\u9fa5\\w\\-]+"
+const val PATTERN_TAG: String = "#([^\\#|.]+)#"
+const val PATTERN_URL: String = "((http|https|ftp|ftps):\\/\\/)?([a-zA-Z0-9-]+\\.){1,5}(com|cn|net|org|hk|tw)((\\/(\\w|-)+(\\.([a-zA-Z]+))?)+)?(\\/)?(\\??([\\.%:a-zA-Z0-9_-]+=[#\\.%:a-zA-Z0-9_-]+(&amp;)?)+)?"
+const val PATTERN_EMOJI: String = "\\[([\u4e00-\u9fa5\\w])+\\]"
+
