@@ -2,13 +2,15 @@ package com.momiji.kotlin.ayaaya.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import com.momiji.kotlin.ayaaya.R
-import com.momiji.kotlin.ayaaya.model.statuses.StatusModel
 import com.momiji.kotlin.ayaaya.module.oauth.login.LoginLocalInfo
 import com.momiji.kotlin.ayaaya.module.statuses.StatusesModule
+import com.momiji.kotlin.ayaaya.ui.adapter.StatusAdapter
 import com.momiji.kotlin.ayaaya.utl.HER_UID
 import com.momiji.kotlin.ayaaya.utl.REQUEST_CODE_LOGIN_WEB_VIEW_ACTIVIT
+import kotlinx.android.synthetic.main.activity_cyweibo_content.*
 
 class CYWeiboContentActivity : AbsActivity() {
 
@@ -28,6 +30,8 @@ class CYWeiboContentActivity : AbsActivity() {
         else {
             Log.d("Logininfo------", login.mAccessToken)
             Log.d("Logininfo------", login.mUid)
+
+            recylerview_cyweibo_statuses.layoutManager = LinearLayoutManager(this@CYWeiboContentActivity)
             getCYWeiboContent()
         }
     }
@@ -48,7 +52,9 @@ class CYWeiboContentActivity : AbsActivity() {
     private fun getCYWeiboContent() {
         val statusesModule = StatusesModule(this@CYWeiboContentActivity)
         statusesModule.getUserTimeline(HER_UID).subscribe({
-            userTimeModel -> userTimeModel.total_number
+            userTimeLineModel ->
+            recylerview_cyweibo_statuses.adapter = StatusAdapter(userTimeLineModel.statuses)
+            recylerview_cyweibo_statuses.adapter.notifyDataSetChanged()
         })
     }
 

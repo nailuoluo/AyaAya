@@ -21,6 +21,7 @@ fun isTokenExpired(expireddate: Long): Boolean {
 fun String.decodeLoginData(): List<String> =
         String(Base64.decode(this, Base64.URL_SAFE or Base64.NO_WRAP or Base64.NO_PADDING or Base64.NO_CLOSE)).split(BM_SEPERATOR)
 
+/*
 fun getWeiboStatusContent(context: Context, text: String): SpannableString {
     val AT_PATTERN = Pattern.compile(PATTERN_AT)
     val TAG_PATTERN = Pattern.compile(PATTERN_TAG)
@@ -58,3 +59,4 @@ fun getWeiboStatusContent(context: Context, text: String): SpannableString {
 
     }
 }
+//*/
